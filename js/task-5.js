@@ -3,25 +3,16 @@ function getRandomHexColor() {
     .toString(16)
     .padStart(6, 0)}`;
 }
-const form = document.querySelector(".login-form");
 
-form.addEventListener("submit", event => {
-  event.preventDefault();
 
-  const email = form.elements.email.value.trim();
-  const password = form.elements.password.value.trim();
+const changeColorBtn = document.querySelector('.change-color');
+const colorSpan = document.querySelector('.color');
+const body = document.body;
 
-  if (email === "" || password === "") {
-    alert("All form fields must be filled in");
-    return;
-  }
+changeColorBtn.addEventListener('click', () => {
+  const randomColor = getRandomHexColor();
 
-  const formData = {
-    email,
-    password,
-  };
-
-  console.log(formData);
-
-  form.reset();
+  body.style.backgroundColor = randomColor;
+  
+  colorSpan.textContent = randomColor;
 });
